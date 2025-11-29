@@ -1,97 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+🧠 AI GÜNLÜK ASİSTAN: DUYGU ANALİZİ MOBİL UYGULAMASI
 
-# Getting Started
+Bu proje, Konuşarak Öğren Stajyer Programı kapsamında 3 günlük bir mini proje olarak React Native ve ücretsiz Hugging Face API'si kullanılarak geliştirilmiştir.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+1. 🌟 Proje Özeti ve Kapsam
 
-## Step 1: Start Metro
+Amaç: Kullanıcının günlük duygu durumunu ve düşüncelerini metin olarak girmesi ve anında geri bildirim alması.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Çekirdek Özellikler (MVP):
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Analiz Ekranı: Metin girişi, AI ile Duygu Analizi (pozitif/nötr/negatif), Özet ve Öneri gösterimi.
 
-```sh
-# Using npm
-npm start
+Geçmiş Ekranı: Yapılan tüm analizlerin yerel olarak (AsyncStorage) saklanması ve listelenmesi.
 
-# OR using Yarn
-yarn start
-```
+Çevrimdışı Yetenek: İnternet bağlantısı olmasa bile önceki analizler görüntülenebilir.
 
-## Step 2: Build and run your app
+UI/UX: Duygu durumuna göre arayüz renklerinin değişimi.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+2. 💻 Temel Teknolojiler ve AI Entegrasyonu
 
-### Android
+Bu proje, modern mobil geliştirme ve yapay zeka araçlarını bir araya getirmektedir:
 
-```sh
-# Using npm
-npm run android
+Mobil Platform (React Native CLI): Hızlı ve yerel uygulama geliştirme.
 
-# OR using Yarn
-yarn android
-```
+Durum & UI (React Hooks, RN Paper): Basit durum yönetimi ve estetik Material Design bileşenleri.
 
-### iOS
+Veri Saklama (AsyncStorage): Geçmiş kayıtların yerel ve çevrimdışı tutulması.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+AI API (Hugging Face Inference API): Ücretsiz AI uç noktası ve Bearer Token yetkilendirmesi.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+AI Modeli (savasy/bert-base-turkish-sentiment-cased): Türkçe metinler için optimize edilmiş BERT tabanlı Duygu Analiz modeli.
 
-```sh
-bundle install
-```
+3. ⚙️ Kurulum ve Çalıştırma Adımları
 
-Then, and every time you update your native dependencies, run:
+Projenin çalıştırılması için Node, JDK ve Android/iOS ortamlarının hazır olması gerekmektedir.
 
-```sh
-bundle exec pod install
-```
+A. Bağımlılıklar ve API Anahtarı
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Proje dizininde npm install komutu ile tüm bağımlılıkları yükleyin.
 
-```sh
-# Using npm
-npm run ios
+Hugging Face üzerinden aldığınız API Token'ını, projenin ana dizinindeki .env dosyasına aşağıdaki formatta kaydedin:
 
-# OR using Yarn
-yarn ios
-```
+HUGGING_FACE_API_KEY="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+B. Uygulamayı Başlatma
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Ağ ve önbellek hatalarını önlemek için:
 
-## Step 3: Modify your app
+# Önbelleği temizleyerek başlat
 
-Now that you have successfully run the app, let's make changes!
+npm start -- --reset-cache
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+# Uygulamayı derle ve çalıştır
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+npx react-native run-android
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+(iOS için npx react-native run-ios)
 
-## Congratulations! :tada:
+4. 📝 Geliştirme Süreci ve Hata Ayıklama Özeti
 
-You've successfully run and modified your React Native App. :partying_face:
+Proje geliştirme sürecinde, kritik işlevselliği sağlamak için çeşitli hata ayıklama adımları uygulanmıştır:
 
-### Now what?
+API Yanıt Güvenilirliği: Hugging Face API'sinin farklı çıktı formatlarına uyum sağlamak için veri işleme mantığı güçlendirilmiştir.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Veri Bütünlüğü: Hatalı (null) geçmiş kayıtları nedeniyle ortaya çıkan render sorunları, veriye varsayılan değerler atanarak ve bir "Geçmişi Temizle" fonksiyonu eklenerek çözülmüştür.
 
-# Troubleshooting
+Ağ ve UI Hataları:
+Cannot read property 'displayName' (Appbar hatası) önbellek temizliği ile giderilmiştir.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Android'de Network Request Failed hatası, AndroidManifest.xml dosyasına android:usesCleartextTraffic="true" eklenerek çözülmüş ve stabil ağ bağlantısı sağlanmıştır.
 
-# Learn More
+5. 📸 Proje Görselleri (Çalışır Demo)
+   Aşağıdaki yer tutuculara, projenin temel ekranlarının yüksek kaliteli ekran görüntülerini ekleyiniz.
 
-To learn more about React Native, take a look at the following resources:
+### 5.1 Günlük Girdi Ekranı (HomeScreen)
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![Ana Ekran Görüntüsü](assets/screenshots/homescreen.png)
+
+### 5.2 Geçmiş Ekranı (HistoryScreen)
+
+![Kayıt Ekranı Görüntüsü](assets/screenshots/historyscreen.png)
+
+6. 💡 AI Araç Kullanım Beyanı
+   Bu projenin karmaşık API entegrasyonu ve zorlu hata ayıklama aşamaları, Gemini (Large Language Model) gibi Yapay Zeka araçlarının aktif yardımıyla gerçekleştirilmiştir. Bu destek, geliştirme hızını artırmış ve projenin kısa sürede tamamlanmasını sağlamıştır.
