@@ -83,12 +83,12 @@ Hatalı (null) geçmiş kayıtları nedeniyle ortaya çıkan render sorunları, 
 
 ### 5.1 Günlük Girdi Ekranı (HomeScreen)
 
-![Ana Ekran Görüntüsü](assets/screenshots/homescreen.png)
+![Ana Ekran Görüntüsü](assets/screenshots/homescreenshot.png)
 ![Ana Ekran Görüntüsü2](assets/screenshots/home.png)
 
 ### 5.2 Geçmiş Ekranı (HistoryScreen)
 
-![Kayıt Ekranı Görüntüsü](assets/screenshots/historyscreen.png)
+![Kayıt Ekranı Görüntüsü](assets/screenshots/historyscreenshot.png)
 ![Kayıt Ekranı Görüntüsü2](assets/screenshots/historyscreen1.png)
 
 ---
