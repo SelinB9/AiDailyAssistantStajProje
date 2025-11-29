@@ -83,7 +83,7 @@ Hatalı (null) geçmiş kayıtları nedeniyle ortaya çıkan render sorunları, 
 
 5.1 Günlük Girdi Ekranı (HomeScreen)
 
-<div style="display: flex; gap: 12px; margin-bottom: 20px;"> <img src="assets/screenshots/homescreenshot.png" width="250" /> <img src="assets/screenshots/home.png" width="250" /> </div>
+<div style="display: flex; gap: 12px; margin-bottom: 20px;"> <img src="assets/screenshots/home.png" width="250" /> <img src="assets/screenshots/homescreenshot.png" width="250" /> </div>
 5.2 Geçmiş Ekranı (HistoryScreen)
 <div style="display: flex; gap: 12px; margin-bottom: 20px;"> <img src="assets/screenshots/historyscreenshot.png" width="250" /> <img src="assets/screenshots/historyscreen1.png" width="250" /> </div>
 
